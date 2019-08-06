@@ -8,12 +8,15 @@ import Data.Bits ((.&.))
 
 import Codec.Picture
 
+-- | White pixel RGB representation.
 whitePx :: PixelRGB8
 whitePx  = PixelRGB8 255 255 255
 
+-- | Black pixel RGB representation.
 blackPx :: PixelRGB8
 blackPx  = PixelRGB8 0 0 0
 
+-- | Alphabet used by the DFAs.
 imageAlphabet :: Set Int
 imageAlphabet  = Set.fromList [0, 1, 2, 3]
 
@@ -71,22 +74,18 @@ chessBoard  =
   [
    [if mod i 2 == 0
     then if mod j 2 == 0 then  blackPx else whitePx
-    else if mod j 2 /= 0 then blackPx else whitePx | j <- js
-   ] | i <- is
+    else if mod j 2 /= 0 then blackPx else whitePx | j <- idxs
+   ] | i <- idxs
   ]
-  where is :: [Int]
-        is  = [0..7]
-        js :: [Int]
-        js  = [0..7]
+  where idxs :: [Int]
+        idxs  = [0..7]
 
 -- | Sierpiński triangle.
-sierpińskiTriangle :: ImagePixels
-sierpińskiTriangle =
+sierpinskiTriangle :: ImagePixels
+sierpinskiTriangle =
   [
-   [if (i .&. j) /= 0 then whitePx else blackPx | j <- js]
-   | i <- is
+   [if (i .&. j) /= 0 then whitePx else blackPx | j <- idxs]
+   | i <- idxs
   ]
-  where is :: [Int]
-        is  = [0..127]
-        js :: [Int]
-        js  = [0..127]
+  where idxs :: [Int]
+        idxs  = [0..127]
