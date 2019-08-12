@@ -21,7 +21,7 @@
     <h3>Assignment (80%)</h3>
     <ul>
       <li>
-        <p>Download the<a href="https://github.com/"> GitHub </a>
+        <p>Download the <a href="https://github.com/">GitHub</a>
         repository <a
         href="https://github.com/afl-eafit/2019-2-lab1">2019-2-lab1</a>.</p>
       </li>
@@ -32,15 +32,14 @@
         <pre> img2dfa :: ImagePixels -> FiniteAutomata state symbol</pre>
         <p>that takes an image's pixels and returns a DFA that describes
           the image;</p>
-        <pre> createImage :: Int -> FiniteAutomata state symbol-> DynamicImage
-</pre>
+        <pre> createImage :: Int -> FiniteAutomata state symbol -> DynamicImage</pre>
         <p>that takes the image's size scale factor n and the
             DFA that describes the image, and returns an image created using
             the DFA.</p>
-        <p> </p>
+        <p></p>
 
         <p>You will need the library <a href="https://bit.ly/2Kf7Gwz">
-          JuicyPixels</a> to generate and save the images.</p>
+        JuicyPixels</a> to generate and save the images.</p>
 
       </li>
 
@@ -71,31 +70,33 @@
     </ul>
 
     <h3>Examples</h3>
-    <p>Using the <code>FiniteAutomata.hs</code> modules in the above
+    <p>Using the <code>FiniteAutomata.hs</code> module in the above
     GitHub repository, this is what a sample input-output looks
     like:</p>
     <pre>
       GHCi&gt; cb = img2dfa chessBoard
       GHCi&gt; cb_img = createImage 7 cb
-      GHCi&gt; savePngImage "chessBoard" cb_img
+      GHCi&gt; savePngImage "chessBoard.png" cb_img
     </pre>
 
       <p>Once the automaton is generated, and its image created, you could
         use the  <code>savePngImage</code> function to save the PNG image named
         "chessBoard" (a 128 x 128 white and black image) to the current
-        working directory.<p>
+        working directory.</p>
       <p> In the case of the chess board, given the parameters in the example,
-        you should obtain the following image:
-         <center><img src="https://bit.ly/33lOjti"
-             alt="8x8 Chess Board of size 128x128"
-             title="8x8 Chess Board of size 128x128"
-             align="bottom"></center></p>
-      <p> For the Sierpiński Triangle, the DFA should generate:
+        you should obtain the following image:</p>
+
+        <center><img src="https://bit.ly/33lOjti"
+                     alt="8x8 Chess Board of size 128x128"
+                     title="8x8 Chess Board of size 128x128"
+                     align="bottom"></img></center>
+
+      <p> For the Sierpiński Triangle, the DFA should generate:</p>
 
         <center><img src="https://bit.ly/2KoQoxm"
              alt="Sierpiński Triangle of size 128x128"
              title="Sierpiński Triangle of size 128x128"
-             align="bottom"></center></p>
+             align="bottom"></img></center>
 
     <h3>Clean code (10%)</h3>
     <p>Before submitting your code, which includes your
@@ -164,11 +165,11 @@
 
     <h3>Bibliography</h3>
     <ul>
-      <li>K. Culik and V. Valenta,
-          "Finite automata based compression of bi-level images,"
-        in Data Compression Conference, Snowbird, UT, 1996 pp. 280.
-          <a href="https://doi.org/10.1109/DCC.1996.488333">DOI</a>.
-          <a href="https://bit.ly/2LYVLW1">Availabe in SINBAD Eafit</a>.
+      <li>K. Culik and V. Valenta (1996). Finite Automata Based
+      Compression of Bi-level Images, in Data Compression Conference,
+      IEEE Computer Society, pp. 280-289.  <a
+      href="https://doi.org/10.1109/DCC.1996.488333">DOI</a>.  <a
+      href="https://bit.ly/2LYVLW1">Availabe via SINBAD at EAFIT</a>.
       </li>
     </ul>
 
@@ -178,9 +179,11 @@
       <tr>
         <td><a href=
         "http://www1.eafit.edu.co/asr/courses/automata-cm0081/">
-        Automata and formal languages - CM0081</a></td>
-
-        <td style="text-align:right;"><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" /></a></td>
+        Automata and formal languages - CM0081</a></td> <td
+        style="text-align:right;"><a
+        href="http://validator.w3.org/check?uri=referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML
+        1.1" height="31" width="88" /></a></td>
       </tr>
     </table>
   </body>
