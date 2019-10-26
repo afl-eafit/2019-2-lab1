@@ -6,7 +6,7 @@ import Data.Set as Set
 import Data.Map as Map
 import Data.Bits ((.&.))
 
-import Codec.Picture
+import Codec.Picture ( PixelRGB8(PixelRGB8) )
 
 -- | White pixel RGB representation.
 whitePx :: PixelRGB8
