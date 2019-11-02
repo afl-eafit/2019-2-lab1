@@ -27,7 +27,8 @@ type ImagePixels = [[PixelRGB8]]
 {- |
 Represents the transition function (delta function) of a
 'FiniteAutomata'. The outer map stores the transitions from an origin
-state, its value (the inner map) stores the symbols that.
+state, its value (the inner map) stores the symbols that leads from
+the origin state to the reached state (value of the inner map).
 -}
 type TransitionFunction state symbol = Map state (Map symbol (Set state))
 
