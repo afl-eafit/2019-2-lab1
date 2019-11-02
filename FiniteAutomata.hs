@@ -55,9 +55,11 @@ Adds a transition to the given 'TransitionFunction'. The tuple
 origin state, the symbol that executes the transition and the end
 state, respectively.
 -}
-addTransition :: forall state symbol. (Ord state, Ord symbol) =>
+addTransition ::
+  forall state symbol. (Ord state, Ord symbol) =>
   (state, symbol, state) ->
-    TransitionFunction state symbol -> TransitionFunction state symbol
+  TransitionFunction state symbol ->
+  TransitionFunction state symbol
 addTransition (q, s, q') =
   Map.insertWith (Map.unionWith Set.union) q (Map.singleton s q'')
   where q'' :: Set state
