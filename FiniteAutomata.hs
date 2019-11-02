@@ -1,4 +1,6 @@
-{- | This module is used to represent Finite Automata. -}
+
+{- | This module is used to represent finite automata. -}
+
 {-# LANGUAGE ScopedTypeVariables #-}
 module FiniteAutomata where
 
@@ -6,7 +8,7 @@ import Data.Set as Set
 import Data.Map as Map
 import Data.Bits ((.&.))
 
-import Codec.Picture
+import Codec.Picture ( PixelRGB8(PixelRGB8) )
 
 -- | White pixel RGB representation.
 whitePx :: PixelRGB8
@@ -22,34 +24,36 @@ imageAlphabet  = Set.fromList [0, 1, 2, 3]
 
 type ImagePixels = [[PixelRGB8]]
 
-{- | Represents the Transition Function (delta function) of a FiniteAutomata.
-     The outer map stores the transitions from an orgin state, its value
-     (the inner map) stores the symbols that leads from the origin state
-     to the reached state (value of the inner map). -}
+{- |
+Represents the transition function (delta function) of a
+'FiniteAutomata'. The outer map stores the transitions from an origin
+state, its value (the inner map) stores the symbols that.
+-}
 type TransitionFunction state symbol = Map state (Map symbol (Set state))
 
-{- | Represents a Finite Automata.
-     The type can represent DFA and NFA, with
-     states of type @state@ and input symbols
-     of type @symbol@. -}
+{- |
+Represents a finite automata. The type can represents DFA and NFA,
+with states of type @state@ and input symbols of type @symbol@.
+-}
 data FiniteAutomata state symbol = FA
-  {
-      -- | The set of states.
-      states       :: Set state
-      -- | The set of input symbols.
-    , alphabet     :: Set symbol
-      -- | The Transition Function.
-    , delta        :: TransitionFunction state symbol
-      -- | The initial state.
-    , initialState :: state
-      -- | The set of final or accepting states.
-    , acceptState  :: Set state
+  { -- | The set of states.
+    states       :: Set state
+  -- | The set of input symbols.
+  , alphabet     :: Set symbol
+  -- | The transition function.
+  , delta        :: TransitionFunction state symbol
+  -- | The initial state.
+  , initialState :: state
+  -- | The set of final or accepting states.
+  , acceptState  :: Set state
   }
 
-{- | Adds a transition to the given TransitionFunction.
-     @(state, symbol, state)@ is a tuple whose elements
-     represent the origin state, the symbol that executes
-     the transition and the end state, respectively. -}
+{- |
+Adds a transition to the given 'TransitionFunction'. The tuple
+@(state, symbol, state)@ is a tuple whose elements represent the
+origin state, the symbol that executes the transition and the end
+state, respectively.
+-}
 addTransition :: forall state symbol. (Ord state, Ord symbol) =>
   (state, symbol, state) ->
     TransitionFunction state symbol -> TransitionFunction state symbol
@@ -58,7 +62,7 @@ addTransition (q, s, q') =
   where q'' :: Set state
         q''  = Set.singleton q'
 
--- | Formats how to display instances of FiniteAutomata.
+-- | Formats how to display instances of 'FiniteAutomata'.
 instance (Show state, Show symbol) => Show (FiniteAutomata state symbol) where
   show (FA st sy tf is ac) =
     "States:         "   ++ show st ++
@@ -69,13 +73,13 @@ instance (Show state, Show symbol) => Show (FiniteAutomata state symbol) where
 
 -- ** Example Images **
 
--- | 2^3 x 2^3 Chess Board.
+-- | 2^3 x 2^3 chess board.
 chessBoard :: ImagePixels
 chessBoard  =
   [
-   [if mod i 2 == 0
-    then if mod j 2 == 0 then  blackPx else whitePx
-    else if mod j 2 /= 0 then blackPx else whitePx | j <- idxs
+   [ if mod i 2 == 0
+     then if mod j 2 == 0 then blackPx else whitePx
+     else if mod j 2 /= 0 then blackPx else whitePx | j <- idxs
    ] | i <- idxs
   ]
   where idxs :: [Int]
@@ -85,7 +89,7 @@ chessBoard  =
 sierpinskiTriangle :: ImagePixels
 sierpinskiTriangle =
   [
-   [if (i .&. j) /= 0 then whitePx else blackPx | j <- idxs]
+   [ if (i .&. j) /= 0 then whitePx else blackPx | j <- idxs ]
    | i <- idxs
   ]
   where idxs :: [Int]
